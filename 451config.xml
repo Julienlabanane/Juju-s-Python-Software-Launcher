@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<data>
+	<cfg>
+		<website>https://www.exemple.com/</website>
+		<programname>Bruh</programname>
+		<launcherscreensize>480x360</launcherscreensize>
+		<appreposource>https://repo.exemple.com</appreposource>
+		<websystem>webbrowser</websystem>
+	</cfg>
+</data>
