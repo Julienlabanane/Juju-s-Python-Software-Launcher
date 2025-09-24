@@ -1,4 +1,4 @@
-**Juju's Python Software Launcher (JPSL)**
+# Juju's Python Software Launcher (JPSL)
+**My (cool) software launcher**
 
-
-My (cool) Software launcher
+(Due to a bug, the marvenoreo contributor is me, Julienlabanane)
