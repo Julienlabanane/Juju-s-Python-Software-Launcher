@@ -22,13 +22,13 @@ tree = ET.parse('451config.xml')
 root = tree.getroot()
 
 # Program info
-Version_release_date = "19/12/24"
+Version_release_date = "07.01.25"
 Tested_Python_version = "3.11.0, 3.12.5, 3.13.0rc2"
 Tested_Pypy_version = "3.10.14"
 isaRelease = False
 ReleaseType = "BETA"
 ReleaseName = "Maximus"
-Program_version = ReleaseType + "-0.104"
+Program_version = ReleaseType + "-0.105"
 ReleaseText = Program_version + "(" + ReleaseType + "," + Version_release_date + "," + "Tested Python Version : " + Tested_Python_version + "," + "Tested Pypy Version : " + Tested_Pypy_version + ")"
 FNSmessagetext = "Sorry, your version of 451Launcher(" + Program_version + ") unsupport this feature"
 App_website = root[0][0].text
@@ -77,6 +77,8 @@ def dbg_screen_content():
     messagebox.showinfo(title="About",message=ReleaseText)
 def viewlog_screen_content():
     print(logpath)
+def hny_screen_content():
+    App.config(background="pink")
 def website_screen_content():
     if websystem == 'webbrowser':
             webbrowser.open_new_tab(App_website)
@@ -101,6 +103,8 @@ CLOSE_Button = Button(text="Close",width="24",command=exit_scene,font="Arial 15"
 CLOSE_Button.pack()
 VER_Label = Label(text=ReleaseName + ' - ' + Program_version,background="black",font="Arial 13",foreground="white")
 VER_Label.pack()
+HNY_Button = Button(text="Happy New Year",width="12",command=hny_screen_content,font="Arial 7",background="pink")
+HNY_Button.pack()
 
 # Program Run
 logging.info("App version: " + ReleaseText)
