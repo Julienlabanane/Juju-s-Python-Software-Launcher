@@ -1,14 +1,16 @@
 
 # Program Init
 import logging
+from tkinter import ttk
 from tkinter import Tk
-from tkinter import Label
-from tkinter import Button
 from tkinter import messagebox
 import sys
 import time
 import xml.etree.ElementTree as ET
 App = Tk()
+frm = ttk.Frame(App, padding=10)
+frm.grid()
+style = ttk.Style()
 logpath = "LOG/"
 logging.basicConfig(
     level=logging.INFO,
@@ -22,13 +24,13 @@ tree = ET.parse('451config.xml')
 root = tree.getroot()
 
 # Program info
-Version_release_date = "07.01.25"
+Version_release_date = "09.01.25"
 Tested_Python_version = "3.11.0, 3.12.5, 3.13.0rc2"
 Tested_Pypy_version = "3.10.14"
 isaRelease = False
 ReleaseType = "BETA"
 ReleaseName = "Maximus"
-Program_version = ReleaseType + "-0.105"
+Program_version = ReleaseType + "-0.106"
 ReleaseText = Program_version + "(" + ReleaseType + "," + Version_release_date + "," + "Tested Python Version : " + Tested_Python_version + "," + "Tested Pypy Version : " + Tested_Pypy_version + ")"
 FNSmessagetext = "Sorry, your version of 451Launcher(" + Program_version + ") unsupport this feature"
 App_website = root[0][0].text
@@ -56,55 +58,31 @@ if websystem == 'pywebview':
 App.geometry(App_screensize) #size of the launcher
 App.title("451 Launcher" + " " + ":" + " " + App_Title) #title of the launcher
 App.resizable(width=False,height=False) #if the window is resizable
-App.config(background="black") #other setting
 
 # Program Code
 logging.info("<style>body {background-color: skyblue;}h3 {font-family: monospace;}</style>") #inject css
+
 def Launch_Program():
     logging.info("Launch" + " " + App_Title)
 def exit_scene():
     messagebox.showinfo(title="You are quitting the 451 Launcher", message='Goodbye <3')
     exit()
-def src_screen_content():
+def dbg_screen_content():
+    messagebox.showinfo(title="About",message=ReleaseText)
+def website_screen_content():
         if websystem == 'webbrowser':
-            webbrowser.open_new_tab(App_repo_source)
+            webbrowser.open_new_tab(App_website)
             logging.info("System's browser launch on : " + App_website)
         if websystem == 'pywebview':
             webview.create()
-            webview.go(App_repo_source)
-            logging.info("Webview's window launch on : " + App_website)
-def dbg_screen_content():
-    messagebox.showinfo(title="About",message=ReleaseText)
-def viewlog_screen_content():
-    print(logpath)
-def hny_screen_content():
-    App.config(background="pink")
-def website_screen_content():
-    if websystem == 'webbrowser':
-            webbrowser.open_new_tab(App_website)
-            logging.info("System's browser launch on : " + App_website)
-    if websystem == 'pywebview':
-            webview.create()
             webview.go(App_website)
             logging.info("Webview's window launch on : " + App_website)
-Title = Label(text="  " + "451 Launcher" + "  ",font="Terminal 24",relief="groove",background="yellow",borderwidth=7)
-Title.pack()
-Main_Button = Button(text="Launch" + " " + App_Title,width="24",command=Launch_Program,font="Arial 15",background="blue")
-Main_Button.pack()
-App_website_Button = Button(text=App_Title + "'s" + " " + "Website", width="24",font="Arial 15",background="blue",command=website_screen_content)
-App_website_Button.pack()
-SRC_Button = Button(text="Source",width="24",command=src_screen_content,font="Arial 15")
-SRC_Button.pack()
-DBG_Button = Button(text="About",width="24",command=dbg_screen_content,font="Arial 15")
-DBG_Button.pack()
-CLRLOG_Button = Button(text="View LOG",width="24",command=viewlog_screen_content,font="Arial 15",background="red")
-CLRLOG_Button.pack()
-CLOSE_Button = Button(text="Close",width="24",command=exit_scene,font="Arial 15",background="red")
-CLOSE_Button.pack()
-VER_Label = Label(text=ReleaseName + ' - ' + Program_version,background="black",font="Arial 13",foreground="white")
-VER_Label.pack()
-HNY_Button = Button(text="Happy New Year",width="12",command=hny_screen_content,font="Arial 7",background="pink")
-HNY_Button.pack()
+Title = ttk.Label(frm,text="  " + "451 Launcher" + "  ",font="Arial 24",borderwidth=7).grid(column=0, row=0)
+Main_Button = ttk.Button(frm,text="Launch" + " " + App_Title,width="32",command=Launch_Program).grid(column=0, row=1)
+App_website_Button = ttk.Button(frm,text=App_Title + "'s" + " " + "Website", width="32",command=website_screen_content).grid(column=0, row=2)
+DBG_Button = ttk.Button(frm,text="About",width="32",command=dbg_screen_content).grid(column=0, row=4)
+CLOSE_Button = ttk.Button(frm,text="Close",width="32",command=exit_scene).grid(column=0, row=5)
+VER_Label = ttk.Label(frm,text=ReleaseName + ' - ' + Program_version).grid(column=0, row=6)
 
 # Program Run
 logging.info("App version: " + ReleaseText)

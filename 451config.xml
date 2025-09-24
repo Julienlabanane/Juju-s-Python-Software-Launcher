@@ -3,7 +3,7 @@
 	<cfg>
 		<website>https://www.exemple.com/</website>
 		<programname>Bruh</programname>
-		<launcherscreensize>480x360</launcherscreensize>
+		<launcherscreensize>252x252</launcherscreensize>
 		<appreposource>https://repo.exemple.com</appreposource>
 		<websystem>webbrowser</websystem>
 	</cfg>
