@@ -1,0 +1,88 @@
+name: Build Python App
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # permet de lancer manuellement le workflow
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: [3.11]
+
+    steps:
+      # 1️⃣ Récupérer le code
+      - uses: actions/checkout@v3
+
+      # 2️⃣ Installer Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      # 3️⃣ Installer dépendances
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller
+
+      # 4️⃣ Build de l'exécutable
+      - name: Build executable
+        run: |
+          mkdir -p dist
+          if [[ "$RUNNER_OS" == "Windows" ]]; then
+            pyinstaller --onefile my_app.py --distpath dist/
+          elif [[ "$RUNNER_OS" == "Linux" ]]; then
+            pyinstaller --onefile my_app.py --distpath dist/
+            # Créer un .deb (nécessite fpm)
+            sudo apt-get update && sudo apt-get install -y ruby ruby-dev build-essential
+            gem install --no-document fpm
+            fpm -s dir -t deb -n my_app -v 1.0 dist/my_app=/usr/local/bin/
+          else
+            pyinstaller --onefile my_app.py --distpath dist/
+            # Créer un .app macOS
+            pip install py2app
+            python setup.py py2app -O2
+          fi
+
+      # 5️⃣ Upload artifacts temporaires
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: my_app_${{ runner.os }}
+          path: dist/
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Download artifacts from build
+        uses: actions/download-artifact@v3
+        with:
+          name: my_app_Windows
+          path: dist/windows
+      - uses: actions/download-artifact@v3
+        with:
+          name: my_app_Linux
+          path: dist/linux
+      - uses: actions/download-artifact@v3
+        with:
+          name: my_app_macOS
+          path: dist/macos
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: v1.0.${{ github.run_number }}
+          name: "Build ${{ github.run_number }}"
+          body: "Automatic build for commit ${{ github.sha }}"
+          files: |
+            dist/windows/*
+            dist/linux/*
+            dist/macos/*
