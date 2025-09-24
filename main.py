@@ -38,7 +38,7 @@ if WS == 'pywebview':
     import webview
 style = ttk.Style()
 App.geometry(apss)
-App.title("451 Launcher" + " " + ":" + " " + apt)
+App.title("Juju's Python Software Launcher (JPSL)" + " " + ":" + " " + apt)
 App.resizable(width=False, height=False)
 def lp():
     logging.info("Launch" + " " + apt)
@@ -60,14 +60,14 @@ def asc():
         webview.create_window("451Connect Panel")
         webview.start()
         logging.info("Webview's window launch on 451Connect Panel")
-Title = ttk.Label(frm, text="  " + "451 Launcher" + "  ", font="Cursive 24", borderwidth=7).grid(column=0, row=0)
+Title = ttk.Label(frm, text="  " + "JPSL" + "  ", font="Cursive 24", borderwidth=7).grid(column=0, row=0)
 MB_txt = root[0][5].text
 MB = ttk.Button(frm, text=MB_txt + " " + apt, width="32", command=lp).grid(column=0, row=1)
 AWB_txt = root[0][6].text
 AWB = ttk.Button(frm, text=apt + AWB_txt, width="32", command=wsc).grid(column=0, row=2)
 DBGB_txt = root[0][7].text
 DBGB = ttk.Button(frm, text=DBGB_txt, width="32", command=dsc).grid(column=0, row=4)
-ACCB = ttk.Button(frm, text="451Connect", width="32", command=asc).grid(column=0, row=5)
+ACCB = ttk.Button(frm, text="JPSLConnect", width="32", command=asc).grid(column=0, row=5)
 CB_txt = root[0][8].text
 CB = ttk.Button(frm, text=CB_txt, width="32", command=es).grid(column=0, row=6)
 VL = ttk.Label(frm, text=RN + ' - ' + PV).grid(column=0, row=7)
