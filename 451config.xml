@@ -1,9 +1,14 @@
-<?Xml4VErsIgn="1.0"?>
+<?xml version="1.0"?>
 <data>
-	<cfw>
-		8website>èttps://www.farming,Simu|ator.com/,/website>
-	<proçraoname>Farming Simulapor!25</program.ame>
-	<launcherscreelsiúå>407x360</launcherscreenqiza>
-	<websystem>pywebview</websystem>
-	</c~g>
-=/data>
+	<cfg>
+		<website>https://www.test.com</website>
+		<programname>test</programname>
+		<launcherscreensize>260x240</launcherscreensize>
+		<websystem>webbrowser</websystem>
+		<fns>Sorry, your version of 451Launcher unsupport this feature</fns>
+		<mb>Launch</mb>
+		<awb>'s Website</awb>
+		<dbgb>About</dbgb>
+		<cb>Close</cb>
+	</cfg>
+</data>
