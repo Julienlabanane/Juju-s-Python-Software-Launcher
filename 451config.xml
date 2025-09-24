@@ -4,7 +4,6 @@
 		<website>https://www.exemple.com/</website>
 		<programname>Bruh</programname>
 		<launcherscreensize>252x252</launcherscreensize>
-		<appreposource>https://repo.exemple.com</appreposource>
 		<websystem>webbrowser</websystem>
 	</cfg>
 </data>
