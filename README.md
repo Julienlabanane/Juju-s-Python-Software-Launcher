@@ -1,6 +1,7 @@
-
 # Juju's Python Software Launcher (JPSL)
 **Mon lanceur de logiciels (cool) en Python**
+
+<img width="322" height="352" alt="image" src="https://github.com/user-attachments/assets/5a3e8b19-a0ed-4004-99a9-9560da3f15b7" />
 
 Le thème ttk par défaut : [ici](https://github.com/rdbende/Azure-ttk-theme)
 
