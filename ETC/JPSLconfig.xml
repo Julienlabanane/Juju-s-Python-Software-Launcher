@@ -3,7 +3,7 @@
 	<cfg>
 		<website>https://www.test.com</website>
 		<programname>test</programname>
-		<launcherscreensize>260x240</launcherscreensize>
+		<launcherscreensize>320x320</launcherscreensize>
 		<websystem>webbrowser</websystem>
 		<localization>en</localization>
 	</cfg>

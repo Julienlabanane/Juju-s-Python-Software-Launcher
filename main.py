@@ -16,15 +16,15 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler(logpath + "log of " + time.strftime("%Y-%m-%d_%H-%M-%S") + ".451log"),
+        logging.FileHandler(logpath + "log of " + time.strftime("%Y-%m-%d_%H-%M-%S") + ".log"),
         logging.StreamHandler()
     ]
 )
-if os.path.exists('ETC/451config.xml') is False:
+if os.path.exists('ETC/JPSLconfig.xml') is False:
     FNS = "Sorry, your version of 451Launcher unsupport this feature"
     apw = "http://example.com"
     apt = ""
-    apss = "260x240"
+    apss = "320x320"
     WS = "webbrowser"
     MB_txt = "Launch"
     AWB_txt = "'s Website"
@@ -32,7 +32,7 @@ if os.path.exists('ETC/451config.xml') is False:
     CB_txt = "Close"
     logging.warning("Configuration file not found, default configuration loaded")
 else:
-    config_tree = ET.parse('ETC/451config.xml')
+    config_tree = ET.parse('ETC/JPSLconfig.xml')
     config_root = config_tree.getroot()
     apw = config_root[0][0].text
     apt = config_root[0][1].text
@@ -54,7 +54,6 @@ RT = "BETA"
 RN = "Maximus"
 PV = RT + "-0.110"
 RT = PV + "(" + RT + "," + VRD + "," + "Tested Python Version : " + T_Python_V + "," + "Tested Pypy Version : " + T_PyPy_V + ")"
-
 if WS == 'webbrowser':
     import webbrowser
 if WS == 'pywebview':
@@ -84,12 +83,19 @@ def asc():
         webview.start()
         logging.info("Webview's window launch on 451Connect Panel")
 Title = ttk.Label(frm, text="  " + "JPSL" + "  ", font="Cursive 24", borderwidth=7).grid(column=0, row=0)
-MB = ttk.Button(frm, text=MB_txt + " " + apt, width="32", command=lp).grid(column=0, row=1)
-AWB = ttk.Button(frm, text=AWB_txt + " " + apt, width="32", command=wsc).grid(column=0, row=2)
-DBGB = ttk.Button(frm, text=DBGB_txt, width="32", command=dsc).grid(column=0, row=4)
-ACCB = ttk.Button(frm, text="JPSLConnect", width="32", command=asc).grid(column=0, row=5)
-CB = ttk.Button(frm, text=CB_txt, width="32", command=es).grid(column=0, row=6)
+MB = ttk.Button(frm, text=MB_txt + " " + apt, width="32", command=lp)
+MB.grid(column=0, row=1, pady=5, padx=10)
+AWB = ttk.Button(frm, text=AWB_txt + " " + apt, width="32", command=wsc)
+AWB.grid(column=0, row=2, pady=5, padx=10)
+DBGB = ttk.Button(frm, text=DBGB_txt, width="32", command=dsc)
+DBGB.grid(column=0, row=4, pady=5, padx=10)
+ACCB = ttk.Button(frm, text="JPSLConnect", width="32", command=asc)
+ACCB.grid(column=0, row=5, pady=5, padx=10)
+CB = ttk.Button(frm, text=CB_txt, width="32", command=es)
+CB.grid(column=0, row=6, pady=5, padx=10)
 VL = ttk.Label(frm, text=RN + ' - ' + PV).grid(column=0, row=7)
 logging.info("App version: " + RT)
 logging.info(sys.version + " " + "Running on" + " " + sys.platform)
+frm.tk.call("source", "AZURE/azure.tcl")
+frm.tk.call("set_theme", "light")
 App.mainloop()
