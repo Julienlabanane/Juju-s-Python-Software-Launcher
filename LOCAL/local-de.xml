@@ -2,9 +2,8 @@
 <data>
     <localization>
         <language>de</language>
-        <mb>Starten</mb>
-        <awb>Webseite von</awb>
-        <dbgb>Über</dbgb>
-        <cb>Schließen</cb>
+    <button_launch>Starten</button_launch>
+    <button_about>Über</button_about>
+    <button_close>Schließen</button_close>
     </localization>
 </data>

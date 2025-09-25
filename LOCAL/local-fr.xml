@@ -2,9 +2,8 @@
 <data>
     <localization>
         <language>fr</language>
-        <mb>Lancer</mb>
-        <awb>Site Web de</awb>
-        <dbgb>À propos</dbgb>
-        <cb>Fermer</cb>
+    <button_launch>Lancer</button_launch>
+    <button_about>À propos</button_about>
+    <button_close>Fermer</button_close>
     </localization>
 </data>

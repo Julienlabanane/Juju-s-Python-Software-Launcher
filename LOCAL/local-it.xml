@@ -2,9 +2,8 @@
 <data>
     <localization>
         <language>it</language>
-        <mb>Avvia</mb>
-        <awb>Sito web di</awb>
-        <dbgb>Info su</dbgb>
-        <cb>Chiudi</cb>
+    <button_launch>Avvia</button_launch>
+    <button_about>Info su</button_about>
+    <button_close>Chiudi</button_close>
     </localization>
 </data>

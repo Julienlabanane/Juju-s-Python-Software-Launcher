@@ -4,7 +4,6 @@
 		<website>https://www.test.com</website>
 		<programname>test</programname>
 		<launcherscreensize>320x320</launcherscreensize>
-		<websystem>webbrowser</websystem>
-		<localization>en</localization>
+		<localization>fr</localization>
 	</cfg>
 </data>
