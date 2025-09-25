@@ -5,10 +5,6 @@
 		<programname>test</programname>
 		<launcherscreensize>260x240</launcherscreensize>
 		<websystem>webbrowser</websystem>
-		<fns>Sorry, your version of 451Launcher unsupport this feature</fns>
-		<mb>Launch</mb>
-		<awb>'s Website</awb>
-		<dbgb>About</dbgb>
-		<cb>Close</cb>
+		<localization>en</localization>
 	</cfg>
 </data>
