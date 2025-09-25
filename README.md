@@ -1,15 +1,15 @@
 # Juju's Python Software Launcher (JPSL)
-**Mon lanceur de logiciels (cool) en Python**
+**My (cool) Python software launcher**
 
-<img width="322" height="352" alt="image" src="https://github.com/user-attachments/assets/5a3e8b19-a0ed-4004-99a9-9560da3f15b7" />
+<img width="322" height="352" alt="image" src="https://github.com/user-attachments/assets/b96dc0bc-d5cc-4abf-9c3c-f5a747b5b1bc" />
 
-Le thème ttk par défaut : [ici](https://github.com/rdbende/Azure-ttk-theme)
+The default ttk theme: [here](https://github.com/rdbende/Azure-ttk-theme)
 
-Ma feuille de route :
+My roadmap:
 
-- Vous pourrez télécharger mes futurs logiciels dans cette application (comme Steam)
-- Système de comptes
-- Lanceur plus configurable
-- Utilisation d'onglets pour créer une future interface
+- You will be able to download my future software in this application (like Steam)
+- Account system
+- More configurable launcher
+- Use of tabs to create a future interface
 
-**(À cause d'un bug, le contributeur marvenoreo c'est moi, Julienlabanane)**
+**(Due to a bug, the contributor marvenoreo is me, Julienlabanane)**
