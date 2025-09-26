@@ -7,7 +7,6 @@ from tkinter import messagebox
 import sys
 import time
 import xml.etree.ElementTree as ET
-import webview
 
 # initialize program variables and settings
 main_window = Tk()
@@ -51,13 +50,13 @@ else:
         button_market_text = localization.find('button_market').text
         button_close_text = localization.find('button_close').text
 main_frame.tk.call("set_theme", theme_choice)
-release_date = "25.09.25"
+release_date = "26.09.25"
 tested_python_versions = "3.11.0, 3.12.5, 3.13.0rc2, 3.13.6"
 tested_pypy_version = "3.10.14"
 is_a_release = False
 release_type = "BETA"
 release_name = "Maximus"
-project_version = release_type + "-0.111"
+project_version = release_type + "-0.112"
 release_info = project_version + "(" + release_type + "," + release_date + "," + "Tested Python Version : " + tested_python_versions + "," + "Tested Pypy Version : " + tested_pypy_version + ")"
 
 # setup main window
@@ -77,8 +76,11 @@ def show_about():
     messagebox.showinfo(title="About", message=release_info)
 def show_market():
     # Code to show the market window here
-    market_window = webview.create_window('The market', 'https://pywebview.flowrl.com')
-    webview.start()
+    market_window = Tk()
+    market_window.title("Market")
+    market_window.geometry("550x600")
+    market_window.mainloop()
+
 title_label = ttk.Label(main_frame, text="JPSL", font="Cursive 24")
 title_label.grid(column=1, row=0)
 launch_button = ttk.Button(main_frame, text=button_launch_text + " " + program_name, style='Accent.TButton', width=24, command=launch_program)
