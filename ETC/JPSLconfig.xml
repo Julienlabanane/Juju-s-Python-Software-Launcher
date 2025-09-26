@@ -1,7 +1,7 @@
-<?xml version="1.0"?>
+<?xml version='1.0' encoding='utf-8'?>
 <data>
 	<cfg>
 		<localization>en</localization>
-		<theme_choice>dark</theme_choice>
+		<theme_choice>light</theme_choice>
 	</cfg>
 </data>
