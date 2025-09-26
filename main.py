@@ -89,8 +89,10 @@ market_button = ttk.Button(main_frame, text=button_market_text, width=24, comman
 market_button.grid(column=1, row=2, pady=220, padx=15)
 version_label = ttk.Label(main_frame, text=release_name + ' - ' + project_version)
 version_label.grid(column=2, row=0)
+
 # logging
 logging.info("App version: " + release_info)
 logging.info(sys.version + " Running on " + sys.platform)
+
 # start main loop
 main_window.mainloop()
