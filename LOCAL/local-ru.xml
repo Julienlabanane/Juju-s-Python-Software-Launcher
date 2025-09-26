@@ -2,8 +2,9 @@
 <data>
     <localization>
         <language>ru</language>
-    <button_launch>Запустить</button_launch>
-    <button_about>О программе</button_about>
-    <button_close>Закрыть</button_close>
+        <button_launch>Запустить</button_launch>
+        <button_about>О программе</button_about>
+        <button_close>Закрыть</button_close>
+        <button_market>[Translate Me]</button_market>
     </localization>
 </data>
