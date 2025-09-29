@@ -5,15 +5,14 @@ from tkinter import Tk
 from tkinter import messagebox
 import sys
 import time
-import xml.etree.ElementTree as ET
 from LIB.settings_window import show_settings
 from LIB.market_window import show_market
 from LIB.config_sniffer import *
 main_window = Tk()
 main_frame = ttk.Frame(main_window, padding=10)
 main_frame.grid()
-if os.path.exists("ART/AZURE/azure.tcl"):
-    main_frame.tk.call("source", "ART/AZURE/azure.tcl")
+if os.path.exists("ASSET/AZURE/azure.tcl"):
+    main_frame.tk.call("source", "ASSET/AZURE/azure.tcl")
     style = ttk.Style()
 else:
     style = ttk.Style()
@@ -28,7 +27,6 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
-
 try:
     main_frame.tk.call("set_theme", theme_choice)
 except Exception:
@@ -66,11 +64,11 @@ launch_button = ttk.Button(
 market_button = ttk.Button(main_frame, text=button_market_text, width=24, command=show_market)
 version_label = ttk.Label(main_frame, text=release_name + ' - ' + project_version)
 title_label = ttk.Label(main_frame, text="JPSL", font="arial 24")
-settings_button = ttk.Button(main_frame, text="⚙", width=24, command=show_settings)
+settings_button = ttk.Button(main_frame, text=settings_button_text, width=24, command=show_settings)
 title_label.grid(column=0, row=0, padx=50)
 launch_button.grid(column=2, row=2, pady=390)
 market_button.grid(column=1, row=2, pady=390)
-settings_button.grid(column=0, row=2, pady=390)
+settings_button.grid(column=0, row=2, pady=390, padx=10)
 version_label.grid(column=2, row=0, padx=120)
 logging.info("App version: " + release_info)
 logging.info(sys.version + " Running on " + sys.platform)

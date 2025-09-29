@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<data>
+    <localization>
+        <language>ar</language>
+        <real_lang_name>العربية</real_lang_name>
+        <button_launch>ابدأ</button_launch>
+        <button_about>حول</button_about>
+        <button_close>إغلاق</button_close>
+        <button_market>السوق</button_market>
+        <button_settings>الإعدادات</button_settings>
+        <lang_list_text>اللغة :</lang_list_text>
+        <theme_label_text>الموضوع :</theme_label_text>
+        <confirmation_settings_message>تم حفظ الإعدادات! (يرجى إعادة تشغيل التطبيق)</confirmation_settings_message>
+        <settings_window_title>الإعدادات</settings_window_title>
+        <market_placeholder_text>نائب السوق</market_placeholder_text>
+        <market_window_title>السوق</market_window_title>
+    </localization>
+</data>
