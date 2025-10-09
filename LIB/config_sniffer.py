@@ -1,7 +1,5 @@
 import os
 import xml.etree.ElementTree as ET
-import logging
-logging.basicConfig(level=logging.INFO)
 if not os.path.exists('ETC/JPSLconfig.xml'):
     theme_choice = "light"
     language_code = "en"
@@ -11,7 +9,6 @@ if not os.path.exists('ETC/JPSLconfig.xml'):
     button_close_text = "Close"
     settings_button_text = "Settings"
     confirmation_settings_message_text = "Configuration saved!"
-    logging.warning("Configuration file not found, default configuration loaded")
 else:
     config_tree = ET.parse('ETC/JPSLconfig.xml')
     config_root = config_tree.getroot()
@@ -40,4 +37,3 @@ else:
         settings_window_title_text = "Settings"
         market_placeholder_text = "Market Placeholder"
         market_window_title_text = "Market"
-        logging.warning("Localization file not found, default language (English) loaded")

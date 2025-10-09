@@ -1,4 +1,3 @@
-import logging
 import os
 from tkinter import ttk
 from tkinter import Tk
@@ -8,6 +7,7 @@ import time
 from LIB.settings_window import show_settings
 from LIB.market_window import show_market
 from LIB.config_sniffer import *
+os.system('color')
 main_window = Tk()
 main_frame = ttk.Frame(main_window, padding=10)
 main_frame.grid()
@@ -16,21 +16,10 @@ if os.path.exists("ASSET/AZURE/azure.tcl"):
     style = ttk.Style()
 else:
     style = ttk.Style()
-log_directory = "LOG/"
-if not os.path.exists(log_directory):
-    os.makedirs(log_directory)
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[
-        logging.FileHandler(log_directory + "log_" + time.strftime("%Y-%m-%d_%H-%M-%S") + ".log"),
-        logging.StreamHandler()
-    ]
-)
 try:
     main_frame.tk.call("set_theme", theme_choice)
 except Exception:
-    logging.warning("Azure theme not available, using default")
+    print("Azure theme not available, using default")
 release_date = "26.09.25"
 tested_python_versions = "3.11.0, 3.12.5, 3.13.0rc2, 3.13.6"
 tested_pypy_version = "3.10.14"
@@ -51,7 +40,7 @@ main_window.geometry(window_size)
 main_window.title("Juju's Python Software Launcher (JPSL) : " + program_name)
 main_window.resizable(width=False, height=False)
 def launch_program():
-    logging.info("Launch " + program_name)
+    print("Launch " + program_name)
 def show_about():
     messagebox.showinfo(title="About", message=release_info)
 launch_button = ttk.Button(
@@ -70,6 +59,6 @@ launch_button.grid(column=2, row=2, pady=390)
 market_button.grid(column=1, row=2, pady=390)
 settings_button.grid(column=0, row=2, pady=390, padx=10)
 version_label.grid(column=2, row=0, padx=120)
-logging.info("App version: " + release_info)
-logging.info(sys.version + " Running on " + sys.platform)
+print("App version: " + release_info)
+print(sys.version + " Running on " + sys.platform)
 main_window.mainloop()
