@@ -3,7 +3,8 @@ from tkinter import ttk
 from tkinter import messagebox
 import os
 import xml.etree.ElementTree as ET
-def show_settings():
+def show_settings_main():
+    settings_already_open = True
     config_path = 'ETC/JPSLconfig.xml'
     if os.path.exists(config_path):
         tree = ET.parse(config_path)

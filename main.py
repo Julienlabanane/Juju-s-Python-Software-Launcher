@@ -4,7 +4,7 @@ from tkinter import Tk
 from tkinter import messagebox
 import sys
 import time
-from LIB.settings_window import show_settings
+from LIB.settings_window import show_settings_main
 from LIB.market_window import show_market
 from LIB.config_sniffer import *
 os.system('color')
@@ -34,15 +34,17 @@ release_info = (
     + ", Tested Python Version : " + tested_python_versions
     + ", Tested Pypy Version : " + tested_pypy_version + ")"
 )
-window_size = "720x480"
+window_size = "780x400"
 program_name = ""
 main_window.geometry(window_size)
 main_window.title("Juju's Python Software Launcher (JPSL) : " + program_name)
-main_window.resizable(width=False, height=False)
+
 def launch_program():
     print("Launch " + program_name)
 def show_about():
     messagebox.showinfo(title="About", message=release_info)
+def show_settings():
+    show_settings_main()
 launch_button = ttk.Button(
     main_frame,
     text=button_launch_text + " " + program_name,
@@ -52,13 +54,17 @@ launch_button = ttk.Button(
 )
 market_button = ttk.Button(main_frame, text=button_market_text, width=24, command=show_market)
 version_label = ttk.Label(main_frame, text=release_name + ' - ' + project_version)
+separator = ttk.Separator(main_frame)
+list_of_programs_listbox = ttk.Treeview(main_frame)
 title_label = ttk.Label(main_frame, text="JPSL", font="arial 24")
 settings_button = ttk.Button(main_frame, text=settings_button_text, width=24, command=show_settings)
+version_label.grid(column=2, row=0, padx=140)
 title_label.grid(column=0, row=0, padx=50)
-launch_button.grid(column=2, row=2, pady=390)
-market_button.grid(column=1, row=2, pady=390)
-settings_button.grid(column=0, row=2, pady=390, padx=10)
-version_label.grid(column=2, row=0, padx=120)
+list_of_programs_listbox.grid(column=0, row=1)
+separator.grid(column=0, row=2, columnspan=3, pady=10, sticky='ew')
+launch_button.grid(column=2, row=3, pady=0)
+market_button.grid(column=1, row=3, pady=0)
+settings_button.grid(column=0, row=3, pady=0, padx=0)
 print("App version: " + release_info)
 print(sys.version + " Running on " + sys.platform)
 main_window.mainloop()

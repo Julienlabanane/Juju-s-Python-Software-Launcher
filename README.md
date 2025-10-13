@@ -17,6 +17,7 @@ My roadmap:
 - a functional system package(like .msi for Windows, .dmg for Mac OS, .deb or .rpm for Linux, .pkg for BSD...)
 - a functional auto-updater
 - a functional payment system (with PayPal and Stripe for exemple, i can't implement this today)
+
 for this plethora of features, I need your help, if you want to help me, contact me on GitHub or by email : juju@gamerjuju68.ovh
 
 *Use Open Legacy Patcher to install Mac OS X Ventura on unsupported Macs or use a Linux distribution 😉 also i think this program work on Aarch64 Macs but i can't test it(i don't have money to buy a Mac M1/M2😉)
