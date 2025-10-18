@@ -11,5 +11,5 @@ class better_command():
     def error():
         print(better_command.error_warning + time.asctime())
     def warning():
-        print(better_command.error_warning + "[" + time.asctime() + "] --> ")
+        print(better_command.yellow_warning + "[" + time.asctime() + "] --> ")
 better_command.hello()
