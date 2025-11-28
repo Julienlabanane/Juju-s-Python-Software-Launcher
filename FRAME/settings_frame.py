@@ -1,8 +1,8 @@
-from tkinter import Tk
-from tkinter import ttk
-from tkinter import messagebox
+from tkinter import Tk,messagebox
+import ttkbootstrap as ttk
 import os
 import xml.etree.ElementTree as ET
+from pathlib import Path
 def show_settings_main():
     settings_already_open = True
     config_path = 'ETC/JPSLconfig.xml'
@@ -15,8 +15,8 @@ def show_settings_main():
     else:
         current_lang = 'en'
         current_theme = 'light'
-    if os.path.exists('LOCAL/' + current_lang + '.xml'):
-        lang_tree = ET.parse('LOCAL/' + current_lang + '.xml')
+    if os.path.exists('LOCAL/' + current_lang):
+        lang_tree = ET.parse('LOCAL/' + current_lang)
         lang_root = lang_tree.getroot()
         localization = lang_root.find('localization')
         lang_list_text = localization.find('lang_list_text').text
@@ -27,10 +27,10 @@ def show_settings_main():
     settings_window_size = "400x250"
     settings_window.geometry(settings_window_size)
     settings_window.title(settings_window_title_text)
-    settings_window.tk.call("source", "ASSET/AZURE/azure.tcl")
-    settings_window.tk.call("set_theme", current_theme)
     ttk.Label(settings_window, text=lang_list_text).pack(pady=5)
-    lang_var = ttk.Combobox(settings_window, values=["English", "Français", "Español", "Deutsch", "Italiano", "Русский", "Dansk", "العربية"])
+    where_is_lang_folder = Path("LOCAL/")
+    lang_folder = [item.name for item in where_is_lang_folder.iterdir()]
+    lang_var = ttk.Combobox(settings_window, values=lang_folder)
     lang_var.set(current_lang)
     lang_var.pack(pady=5)
     ttk.Label(settings_window, text=theme_label_text).pack(pady=5)
