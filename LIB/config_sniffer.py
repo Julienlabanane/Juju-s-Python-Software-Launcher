@@ -1,7 +1,6 @@
 import os
 import xml.etree.ElementTree as ET
 if not os.path.exists('ETC/JPSLconfig.xml'):
-    theme_choice = "light"
     language_code = "en"
     button_launch_text = "Launch"
     button_about_text = "About"
@@ -13,7 +12,6 @@ else:
     config_tree = ET.parse('ETC/JPSLconfig.xml')
     config_root = config_tree.getroot()
     language_code = config_root[0][0].text
-    theme_choice = config_root[0][1].text
     if os.path.exists('LOCAL/' + language_code):
         lang_tree = ET.parse('LOCAL/' + language_code)
         lang_root = lang_tree.getroot()

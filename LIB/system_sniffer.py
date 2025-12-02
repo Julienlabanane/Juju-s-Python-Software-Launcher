@@ -70,9 +70,13 @@ def get_gpu_name():
     if system == "Windows":
         try:
             output = subprocess.check_output(
-                "wmic path win32_VideoController get name", shell=True
-            ).decode().split("\n")
-            gpus = [line.strip() for line in output if line.strip() and "Name" not in line]
+                [
+                    "powershell",
+                    "-Command",
+                    "Get-CimInstance Win32_VideoController | Select-Object -ExpandProperty Name"
+                ]
+            ).decode().splitlines()
+            gpus = [line.strip() for line in output if line.strip()]
             return gpus[0] if gpus else "Unknown GPU"
         except:
             return "Unknown GPU"
@@ -104,12 +108,15 @@ def get_ram():
     # Windows
     if system == "Windows":
         output = subprocess.check_output(
-            "wmic computersystem get TotalPhysicalMemory", shell=True
-        ).decode().split("\n")
-        values = [v.strip() for v in output if v.strip() and "TotalPhysicalMemory" not in v]
-        bytes_ram = int(values[0])
+                [
+                    "powershell",
+                    "-Command",
+                    "Get-CimInstance Win32_ComputerSystem | Select-Object -ExpandProperty TotalPhysicalMemory"
+                ]
+            ).decode().strip()
+        first_line = output.splitlines()[0] if output.splitlines() else output
+        bytes_ram = int(first_line.replace(',', '').strip())
         return f"{bytes_ram / (1024**3):.2f} GB"
-
     return "Unknown RAM"
 
 
