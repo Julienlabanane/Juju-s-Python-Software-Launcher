@@ -3,9 +3,9 @@
 	<infodata>
 		<author>Julienlabanane</author>
 		<contact>juju@gamerjuju68.ovh</contact>
-		<version>1</version>
+		<version>1.1</version>
 		<date>
-			<day>1</day>
+			<day>9</day>
 			<month>12</month>
 			<year>2025</year>
 		</date>
@@ -19,7 +19,7 @@
         <button_close>Fermer</button_close>
         <button_market>Marché</button_market>
         <button_settings>Paramètres</button_settings>
-        <lang_list_text>Langue :</lang_list_text>
+        <lang_list_text>Paquet linguistique :</lang_list_text>
         <confirmation_settings_message>Configuration enregistrée ! (Veuillez redémarrer l'application)</confirmation_settings_message>
         <settings_window_title>Paramètres</settings_window_title>
         <market_placeholder_text>Marché Espace réservé</market_placeholder_text>

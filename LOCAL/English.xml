@@ -3,9 +3,9 @@
 	<infodata>
 		<author>Julienlabanane</author>
 		<contact>juju@gamerjuju68.ovh</contact>
-		<version>1</version>
+		<version>1.1</version>
 		<date>
-			<day>1</day>
+			<day>9</day>
 			<month>12</month>
 			<year>2025</year>
 		</date>
@@ -19,7 +19,7 @@
         <button_close>Close</button_close>
         <button_market>Market</button_market>
         <button_settings>Settings</button_settings>
-        <lang_list_text>Language :</lang_list_text>
+        <lang_list_text>Language Pack:</lang_list_text>
         <confirmation_settings_message>Configuration saved! (Please restart the application)</confirmation_settings_message>
         <settings_window_title>Settings</settings_window_title>
         <market_placeholder_text>Market Placeholder</market_placeholder_text>

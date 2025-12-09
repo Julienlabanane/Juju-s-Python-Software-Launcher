@@ -14,7 +14,6 @@ log_file.add_heading("JPSL Log File", 0)
 log_file.add_paragraph("Log created on: " + timenow)
 system_sniffer_result = (
     ('CPU', system_sniffer.get_cpu_name()),
-    ('GPU', system_sniffer.get_gpu_name()),
     ('RAM', system_sniffer.get_ram()),
     ('OS', system_sniffer.get_os_info()),
 )

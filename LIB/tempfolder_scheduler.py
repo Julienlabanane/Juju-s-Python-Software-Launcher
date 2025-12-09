@@ -47,7 +47,4 @@ class TempFolder:
     def when_im_dont_love_JSPL_main_programmer():
         print("Plz love me <3")
 
-
-# --- Utilisation ---
 TempFolder.init()
-TempFolder.auto_clear_on_exit()
