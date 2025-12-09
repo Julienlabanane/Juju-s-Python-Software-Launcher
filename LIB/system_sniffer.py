@@ -1,6 +1,22 @@
 import platform
+import re
+from xml.etree import ElementTree
+from LIB import minbetter_command
+from LIB.minbetter_command import min_better_command as minbetter_command
 import subprocess
 import re
+from xml.etree import ElementTree
+from pathlib import Path
+def _log(msg: str, level: str = "info"):
+    try:
+        print(f"[{level.upper()}] {msg}")
+    except Exception:
+        pass
+try:
+    from LIB import tempfolder_scheduler
+except Exception:
+    tempfolder_scheduler = None
+    minbetter_command("Cannot import tempfolder scheduler", "error")
 
 # -----------------------------
 # CPU
@@ -21,25 +37,28 @@ def get_cpu_name():
                 for line in f:
                     if "model name" in line:
                         return line.split(":")[1].strip()
-        except:
+        except Exception:
             pass
+        minbetter_command("Unknown CPU", "error")
         return "Unknown CPU"
 
     # Windows
     if system == "Windows":
         try:
-            import winreg
+            import winreg  # type: ignore
             key = winreg.OpenKey(
                 winreg.HKEY_LOCAL_MACHINE,
                 r"HARDWARE\DESCRIPTION\System\CentralProcessor\0"
             )
             name, _ = winreg.QueryValueEx(key, "ProcessorNameString")
             return name
-        except:
+        except Exception:
+            minbetter_command("Unknown CPU", "error")
             return "Unknown CPU"
 
+    minbetter_command("Unknown CPU", "error")
     return "Unknown CPU"
-
+minbetter_command("CPU : " + get_cpu_name(), "info")
 
 # -----------------------------
 # GPU
@@ -61,8 +80,11 @@ def get_gpu_name():
             output = subprocess.check_output("lspci", shell=True).decode()
             for line in output.split("\n"):
                 if "VGA compatible controller" in line or "3D controller" in line:
-                    return line.split(":")[2].strip()
-        except:
+                    parts = line.split(":")
+                    if len(parts) >= 3:
+                        return parts[2].strip()
+                    return parts[-1].strip()
+        except Exception:
             pass
         return "Unknown GPU"
 
@@ -78,11 +100,10 @@ def get_gpu_name():
             ).decode().splitlines()
             gpus = [line.strip() for line in output if line.strip()]
             return gpus[0] if gpus else "Unknown GPU"
-        except:
+        except Exception:
             return "Unknown GPU"
-
     return "Unknown GPU"
-
+minbetter_command("VGA : " + get_gpu_name(), "info")
 
 # -----------------------------
 # RAM
@@ -99,26 +120,34 @@ def get_ram():
 
     # Linux
     if system == "Linux":
-        with open("/proc/meminfo") as f:
-            for line in f:
-                if "MemTotal:" in line:
-                    kb = int(line.split()[1])
-                    return f"{kb / (1024**2):.2f} GB"
+        try:
+            with open("/proc/meminfo") as f:
+                for line in f:
+                    if "MemTotal:" in line:
+                        kb = int(line.split()[1])
+                        return f"{kb / (1024**2):.2f} GB"
+        except Exception:
+            pass
+        return "Unknown RAM"
 
     # Windows
     if system == "Windows":
-        output = subprocess.check_output(
-                [
-                    "powershell",
-                    "-Command",
-                    "Get-CimInstance Win32_ComputerSystem | Select-Object -ExpandProperty TotalPhysicalMemory"
-                ]
-            ).decode().strip()
-        first_line = output.splitlines()[0] if output.splitlines() else output
-        bytes_ram = int(first_line.replace(',', '').strip())
-        return f"{bytes_ram / (1024**3):.2f} GB"
+        try:
+            output = subprocess.check_output(
+                    [
+                        "powershell",
+                        "-Command",
+                        "Get-CimInstance Win32_ComputerSystem | Select-Object -ExpandProperty TotalPhysicalMemory"
+                    ]
+                ).decode().strip()
+            first_line = output.splitlines()[0] if output.splitlines() else output
+            bytes_ram = int(first_line.replace(',', '').strip())
+            return f"{bytes_ram / (1024**3):.2f} GB"
+        except Exception:
+            return "Unknown RAM"
+    minbetter_command("Unknown RAM", "error")
     return "Unknown RAM"
-
+minbetter_command("RAM : " + get_ram(), "info")
 
 # -----------------------------
 # OS VERSION + DISTRIBUTION
@@ -141,7 +170,7 @@ def get_os_info():
                         k, v = line.strip().split("=", 1)
                         info[k] = v.strip('"')
             distro = info.get("PRETTY_NAME", "Unknown Linux")
-        except:
+        except Exception:
             distro = "Unknown Linux"
 
         version = platform.release()
@@ -152,11 +181,10 @@ def get_os_info():
         version = platform.version()
         return ("Windows", version)
 
+    minbetter_command("Unknown OS", "error")
     return ("Unknown OS", "Unknown Version")
-
-
-# -----------------------------
-# MAIN
-# -----------------------------
+minbetter_command("OS : " + str(get_os_info()), "info")
+# If executed directly, print summary (safe)
 if __name__ == "__main__":
     os_name, os_version = get_os_info()
+    print(f"OS: {os_name} {os_version}")

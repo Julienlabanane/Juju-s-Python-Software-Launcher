@@ -1,5 +1,6 @@
 import os
 import xml.etree.ElementTree as ET
+from LIB.better_command import better_command
 if not os.path.exists('ETC/JPSLconfig.xml'):
     language_code = "en"
     button_launch_text = "Launch"
@@ -8,6 +9,7 @@ if not os.path.exists('ETC/JPSLconfig.xml'):
     button_close_text = "Close"
     settings_button_text = "Settings"
     confirmation_settings_message_text = "Configuration saved!"
+    better_command("No config file found, defaulting to English localization.", "warning")
 else:
     config_tree = ET.parse('ETC/JPSLconfig.xml')
     config_root = config_tree.getroot()
@@ -25,6 +27,7 @@ else:
         settings_window_title_text = localization.find('settings_window_title').text
         market_placeholder_text = localization.find('market_placeholder_text').text
         market_window_title_text = localization.find('market_window_title').text
+        better_command(f"Localization loaded: {language_code}", "success")
     else:
         button_launch_text = "Launch"
         button_about_text = "About"
@@ -35,3 +38,5 @@ else:
         settings_window_title_text = "Settings"
         market_placeholder_text = "Market Placeholder"
         market_window_title_text = "Market"
+        better_command(f"Localization file for '{language_code}' not found, defaulting to English.", "error")
+better_command(f"Configuration loaded. Language: {language_code}", "info")
