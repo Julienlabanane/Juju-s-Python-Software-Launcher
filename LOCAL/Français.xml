@@ -4,11 +4,11 @@
 		<author>Julienlabanane</author>
 		<contact>juju@gamerjuju68.ovh</contact>
 		<version>1.1</version>
-		<date>
-			<day>9</day>
-			<month>12</month>
-			<year>2025</year>
-		</date>
+		<!-- START datetime -->
+		<day>15</day>
+		<month>12</month>
+		<year>2025</year>
+		<!-- END datetime-->
 		<additionalnotes>Ceci est la traduction française officiel fourni intégré</additionalnotes>
 	</infodata>
     <localization>

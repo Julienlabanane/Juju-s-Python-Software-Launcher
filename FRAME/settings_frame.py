@@ -4,6 +4,7 @@ import ttkbootstrap as ttk
 import os
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from LIB.config_sniffer import *
 
 #main function to show settings window
 def show_settings_main():
@@ -54,11 +55,21 @@ def show_settings_main():
     lang_label = ttk.Label(settings_window, text=lang_list_text)
     lang_var = ttk.Combobox(settings_window, values=lang_folder)
     save_btn = ttk.Button(settings_window, text="Save", command=save_config)
-    
+    author_label = ttk.Label(settings_window, text=author)
+    contact_label = ttk.Label(settings_window, text=contact)
+    version_label = ttk.Label(settings_window, text=version)
+    date_label = ttk.Label(settings_window, text=month + "/" + day + "/" + year)
+    additionalnotes_label = ttk.Label(settings_window, text=additionalnotes)
+
     # Set UI elements
     lang_var.set(current_lang)
 
     # Place UI elements
     lang_label.pack(pady=5)
     lang_var.pack(pady=5)
+    author_label.pack()
+    contact_label.pack()
+    version_label.pack()
+    date_label.pack()
+    additionalnotes_label.pack()
     save_btn.pack(pady=15)

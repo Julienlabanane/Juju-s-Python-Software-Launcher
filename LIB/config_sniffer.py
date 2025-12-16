@@ -17,6 +17,14 @@ else:
     if os.path.exists('LOCAL/' + language_code):
         lang_tree = ET.parse('LOCAL/' + language_code)
         lang_root = lang_tree.getroot()
+        langpack_info = lang_root.find('infodata')
+        author = langpack_info.find('author').text
+        contact = langpack_info.find('contact').text
+        version = langpack_info.find('version').text
+        day = langpack_info.find('day').text
+        month = langpack_info.find('month').text
+        year = langpack_info.find('year').text
+        additionalnotes = langpack_info.find('additionalnotes').text
         localization = lang_root.find('localization')
         button_launch_text = localization.find('button_launch').text
         button_about_text = localization.find('button_about').text
